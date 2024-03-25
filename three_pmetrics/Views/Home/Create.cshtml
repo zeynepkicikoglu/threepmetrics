@@ -1,0 +1,65 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-controller="Home" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="PointName" class="form-label">Emisyon oluşum noktası:</label>
+        <input asp-for="PointName" class="form-control">
+        <span asp-validation-for="PointName"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PointDescription" class="form-label">Emisyon oluşum noktası açıklaması:</label>
+        <input asp-for="PointDescription" class="form-control">
+        <span asp-validation-for="PointDescription"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EmissionFactor" class="form-label">Emisyon Faktörü:</label>
+        <input asp-for="EmissionFactor" class="form-control" type="number"
+          id="factor"
+          name="factor"
+          step="0.01"
+          required>
+        <span asp-validation-for="EmissionFactor"></span>
+    </div>
+    <div class="mb-3">
+    <label asp-for="EmissionFactorTitle" class="form-label">Emisyon Tüketim Birimi:</label>
+    <input asp-for="EmissionFactorTitle" class="form-control" />
+    <span asp-validation-for="EmissionFactorTitle"></span>
+    <select id="unit" name="unit" class="form-control">
+        <option value="ton">Ton</option>
+        <option value="m3">Metreküp</option>
+        <option value="litre">Litre</option>
+        <!-- Diğer birimler buraya eklenebilir -->
+    </select>
+    </div>
+    <div class="mb-3">
+    <label asp-for="CreationDate" class="form-label">Oluşturulma Tarihi:</label>
+    <input asp-for="CreationDate" class="form-control" type="date" />
+    <span asp-validation-for="CreationDate"></span>
+    </div>
+    <div class="mb-3">
+    <label asp-for="CreationTime" class="form-label">Oluşturulma Saati:</label>
+    <input asp-for="CreationTime" class="form-control" type="time" />
+    <span asp-validation-for="CreationTime"></span>
+    </div>
+    <div class="input-group mb-3">
+        <input type="file" name="imageFile" id="imageFile" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select" >
+            <option value="">Hepsi</option>
+        </select>
+        <span asp-validation-for="CategoryId"></span>
+    </div>
+    <div class="mb-3 form-check">
+        <input asp-for="EmissionIsActive" class="form-check-input">
+        <label asp-for="EmissionIsActive" class="form-check-label"></label>
+        <span asp-validation-for="EmissionIsActive"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
